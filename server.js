@@ -6,7 +6,7 @@ require("dotenv").config();
 const app = express();
 app.use(cors(
   {
-    origin: "https://frontend-task-34.vercel.app", // Adjust this to your frontend URL
+    origin: "https://frontend-task-34.vercel.app",
     credentials: true // Allow credentials if needed
   }
 ));
@@ -37,8 +37,10 @@ app.post("/submit", async (req, res) => {
     await user.save();
     res.status(200).json({ message: "User saved successfully" });
   } catch (err) {
+    console.error("Error saving user:", err); // Add this line
     res.status(500).json({ error: "Failed to save user" });
   }
 });
+
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
