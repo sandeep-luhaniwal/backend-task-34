@@ -4,7 +4,12 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
-app.use(cors());
+app.use(cors(
+  {
+    origin: "https://frontend-task-34.vercel.app", // Adjust this to your frontend URL
+    credentials: true // Allow credentials if needed
+  }
+));
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
