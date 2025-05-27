@@ -51,8 +51,14 @@ app.post("/submit", async (req, res) => {
   }
 });
 
-app.get("/data", (req, res) => {
-  res.json(submissions); // assuming `submissions` is an array storing data
+app.get("/data", async (req, res) => {
+  try {
+    const users = await User.find().sort({ _id: -1 }); // optional: latest first
+    res.json(users);
+  } catch (err) {
+    console.error("Error fetching users:", err);
+    res.status(500).json({ error: "Failed to fetch data" });
+  }
 });
 
 
