@@ -51,6 +51,10 @@ app.post("/submit", async (req, res) => {
   }
 });
 
+app.get("/data", (req, res) => {
+  res.json(submissions); // assuming `submissions` is an array storing data
+});
+
 
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
